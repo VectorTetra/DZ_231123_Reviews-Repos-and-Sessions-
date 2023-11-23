@@ -6,9 +6,9 @@ namespace DZ_231123_Reviews_Repos_and_Sessions_.Repos
     {
         Task<List<UserReviewVM>> GetReviews();
         Task<List<User>> GetUsers();
-        Task<User> FindUser(int id);
+        Task<User?> FindUser(int id);
         Task CreateReview(UserReviewVM reviewVM);
         Task<bool> TryToRegister(RegisterVM registerVM);
-        Task<bool> TryToLogin(LoginVM loginVM);
+        Task<string?> TryToLogin(LoginVM loginVM);
     }
 }

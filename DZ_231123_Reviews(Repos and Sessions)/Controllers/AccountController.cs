@@ -31,10 +31,11 @@ namespace DZ_231123_Reviews_Repos_and_Sessions_.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool isSucceededLogin = await repo.TryToLogin(loginVM);
-                if (isSucceededLogin)
+                string SucceededLogin = await repo.TryToLogin(loginVM);
+                if (SucceededLogin != null)
                 {
                     HttpContext.Session.SetString("login", loginVM.Login);
+                    HttpContext.Session.SetString("FullName", SucceededLogin);
                     return RedirectToAction("Index", "Home");
                 }
                 else
