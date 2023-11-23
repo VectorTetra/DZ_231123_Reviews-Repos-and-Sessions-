@@ -1,9 +1,23 @@
-﻿@{
+﻿@model IEnumerable<DZ_231123_Reviews_Repos_and_Sessions_.Models.UserReviewVM>
+@{
     ViewData["Title"] = "Reviews";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
+@if (Context.Session.GetString("login") != null)
+{
+    <h1 style="text-align:center">Залиште свій відгук.</h1>
+    <form asp-action="Index" asp-controller="Home" method="post">
+        <div style="margin: 5px 10px 5px 10px">
+            <input type="text" name="Login" value="@Context.Session.GetString("login")" readonly>
+            <br>
+            <textarea style="width:100%;resize:vertical;" name="ReviewText" placeholder="Опишіть свої враження тут..." required></textarea>
+        </div> 
+    </form>
+}
+
+<h3 style="text-align:center">Відгуки користувачів</h3>
+<div>
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

@@ -15,17 +15,18 @@ namespace DZ_231123_Reviews_Repos_and_Sessions_.Controllers
             this.repo = repo;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var Reviews = await repo.GetReviews();
+            return View(Reviews);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index([FromForm] string Login, [FromForm] string ReviewText)
+        public async Task<IActionResult> Index([FromForm] string Login, [FromForm] string ReviewText, IEnumerable<UserReviewVM> Reviews)
         {
-            UserReviewVM userReviewVM = new() { ReviewText= ReviewText ,UserLogin = Login};
+            UserReviewVM userReviewVM = new() { ReviewText = ReviewText, UserLogin = Login, ReviewDate = DateTime.Now };
             await repo.CreateReview(userReviewVM);
-            return View();
+            return View(Reviews);
         }
     }
 }

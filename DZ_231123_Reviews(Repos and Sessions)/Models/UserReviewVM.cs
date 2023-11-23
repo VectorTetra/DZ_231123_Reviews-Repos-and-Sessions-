@@ -11,11 +11,6 @@ namespace DZ_231123_Reviews_Repos_and_Sessions_.Models
         [Display(Name = "Відгук")]
         public string ReviewText{ get; set; }
         [Display(Name = "Дата відгуку")]
-        public DateTime ReviewDate { get;}
-
-        public UserReviewVM()
-        {
-            ReviewDate = DateTime.Now;
-        }
+        public DateTime ReviewDate { get; set; }
     }
 }
