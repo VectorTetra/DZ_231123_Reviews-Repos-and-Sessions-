@@ -22,10 +22,11 @@ namespace DZ_231123_Reviews_Repos_and_Sessions_.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index([FromForm] string Login, [FromForm] string ReviewText, IEnumerable<UserReviewVM> Reviews)
+        public async Task<IActionResult> Index([FromForm] string Login, [FromForm] string ReviewText)
         {
             UserReviewVM userReviewVM = new() { ReviewText = ReviewText, UserLogin = Login, ReviewDate = DateTime.Now };
             await repo.CreateReview(userReviewVM);
+            var Reviews = await repo.GetReviews();
             return View(Reviews);
         }
     }

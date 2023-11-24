@@ -4,7 +4,7 @@
     ViewBag.Title = "Авторизація";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Logon</h1>
+<h1>Увійти</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,14 +15,26 @@
                 <input asp-for="Login" class="form-control" />
                 <span asp-validation-for="Login" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Увійти" class="btn btn-primary" />
             </div>
+        </form>
+    </div>
+    <div>
+        <br />
+        <form asp-action="Register" asp-controller="Account" method="get">
+            <input type="submit" value="Реєстрація"/>
+        </form>
+        <br />
+        <form asp-action="EnterAsGuest" asp-controller="Account" method="get">
+            <input type="submit" value="Увійти як гість" />
         </form>
     </div>
 </div>

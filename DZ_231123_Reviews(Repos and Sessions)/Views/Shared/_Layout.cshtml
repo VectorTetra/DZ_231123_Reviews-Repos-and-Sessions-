@@ -15,13 +15,13 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Відгуки</a>
                 <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Register">Реєстрація</a>
-                @if (Context.Session.GetString("FirstName") == null)
+                @if (Context.Session.GetString("FullName") == null)
                 {
                     <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">Увійти</a>
                 }
                 else
                 {
-                    <span class="navbar-brand">Вітаємо, @Context.Session.GetString("FirstName")  @Context.Session.GetString("LastName")</span>
+                    <span class="navbar-brand">Вітаємо, @Context.Session.GetString("FullName")</span>
                     <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="EnterAsGuest">Вийти</a>
                 }
             </div>

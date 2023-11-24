@@ -19,7 +19,12 @@ namespace DZ_231123_Reviews_Repos_and_Sessions_.Repos
             List<UserReviewVM> res = new();
             foreach(var item in col) 
             {
-                UserReviewVM appitem = new() { UserLogin = item.User.Login, ReviewText = item.ReviewText, ReviewDate = item.ReviewDate };
+                var Uuser = await _context.Users.FindAsync(item.UserId);
+                UserReviewVM appitem = new()
+                {
+                    UserLogin = Uuser.Login, 
+                    ReviewText = item.ReviewText, 
+                    ReviewDate = item.ReviewDate };
                 res.Add(appitem);
             }
             return res;
@@ -92,7 +97,7 @@ namespace DZ_231123_Reviews_Repos_and_Sessions_.Repos
         public async Task<string?> TryToLogin(LoginVM loginVM) 
         {
             if (_context.Users.Count() == 0) return null;
-            var user = _context.Users.SingleOrDefault(x => x.Login == loginVM.Login);
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.Login.Equals(loginVM.Login));
             if (user == null)
             {
                 return null;
