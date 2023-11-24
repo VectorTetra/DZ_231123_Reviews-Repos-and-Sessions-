@@ -92,7 +92,7 @@ namespace DZ_231123_Reviews_Repos_and_Sessions_.Repos
         public async Task<string?> TryToLogin(LoginVM loginVM) 
         {
             if (_context.Users.Count() == 0) return null;
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Login == loginVM.Login);
+            var user = _context.Users.SingleOrDefault(x => x.Login == loginVM.Login);
             if (user == null)
             {
                 return null;

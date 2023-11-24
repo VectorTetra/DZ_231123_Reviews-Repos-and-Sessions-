@@ -6,22 +6,23 @@
     <title>@ViewData["Title"] - ASP.NET Core MVC Application</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/MyStyle.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/StudentsMVC.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home page</a>
-                <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Register">Registration</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Відгуки</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Register">Реєстрація</a>
                 @if (Context.Session.GetString("FirstName") == null)
                 {
-                    <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">Logоn</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">Увійти</a>
                 }
                 else
                 {
                     <span class="navbar-brand">Вітаємо, @Context.Session.GetString("FirstName")  @Context.Session.GetString("LastName")</span>
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="EnterAsGuest">Вийти</a>
                 }
             </div>
         </nav>

@@ -18,6 +18,27 @@
 
 <h3 style="text-align:center">Відгуки користувачів</h3>
 <div>
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if(Model.Count() > 0)
+    {
+        foreach(var item in Model)
+        {
+            <table>
+                <tr>
+                    <th>
+                        <span class="LoginLabel">@Html.Display(item.UserLogin)</span>
+                        <span class="DatetimeLabel">@Html.Display(item.ReviewDate.ToString())</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="TextReviewLabel">@Html.Display(item.ReviewText)</div>
+                    </th>
+                </tr>
+            </table>
+        }
+    }
+    else
+    {
+        <div class="NoOneReviewLabel">Поки що немає відгуків...</div>
+    }
 </div>
